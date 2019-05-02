@@ -1,0 +1,160 @@
+<!--
+ * Copyright (c) 2019 by Christopher Mead. All rights reserved.
+ *
+ * This file is part of the Brick Arch project, an addon for QCAD 3.0.
+ *
+ * This copy of Brick Arch is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU General Public Licence as published by
+ * the Free Software Foundation, either version 3 of the Licence, or
+ * (at your option) any later version.
+ *
+ * This free version of Brick Arch is distributed in the hope that it will be
+ * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERTHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public Licence for more details.
+-->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+  <class>BrickArch</class>
+  <widget class="QWidget" name="BrickArch">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>310</width>
+        <height>51</height>
+      </rect>
+    </property>
+    <layout class="QHBoxLayout">
+      <item>
+        <widget class="QComboBox" name="brickWidthOrCount">
+          <property name="toolTip">
+            <string>Brick width or number of bricks horizontally</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="RMathLineEdit" name="BrickWidthOrCount">
+          <property name="toolTip">
+            <string>The width of an uncut brick to be used in the arch</string>
+          </property>
+          <property name="text">
+            <string notr="true">65</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="QLabel" name="length">
+          <property name="text">
+            <string>Length:</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="RMathLineEdit" name="Length">
+          <property name="toolTip">
+            <string>The length of the base of the arch</string>
+          </property>
+          <property name="text">
+            <string notr="true">1000</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="QLabel" name="height">
+          <property name="text">
+            <string>Height:</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="RMathLineEdit" name="Height">
+          <property name="toolTip">
+            <string>The height of the arch</string>
+          </property>
+          <property name="text">
+            <string notr="true">215</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="QLabel" name="jointSize">
+          <property name="text">
+            <string>Joint:</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="RMathLineEdit" name="JointSize">
+          <property name="toolTip">
+            <string>The width of the joints in the arch</string>
+          </property>
+          <property name="text">
+            <string notr="true">5</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="QLabel" name="skew">
+          <property name="text">
+            <string>Skew:</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="RMathLineEdit" name="Skew">
+          <property name="toolTip">
+            <string>The angle of the skew (or the length of the skew if the tickbox is checked</string>
+          </property>
+          <property name="text">
+            <string notr="true">20</string>
+          </property>
+        </widget>
+      </item>
+      <item>
+        <widget class="QCheckBox" name="SkewIsLength">
+          <property name="text">
+            <string>Skew is length</string>
+          </property>
+          <property name="checked">
+            <bool>false</bool>
+          </property>
+        </widget>
+	  </item>
+      <item>
+        <widget class="QToolButton" name="Confirm">
+          <property name="toolTip">
+            <string>Confirm dimensions</string>
+          </property>
+          <property name="icon">
+			<iconset>../Confirm.svg</iconset>
+		  </property>
+          <property name="enabled">
+          	<bool>true</bool>
+		  </property>
+          <property name="autoRaise">
+          	<bool>true</bool>
+		  </property>
+        </widget>
+      </item>
+      <item>
+      	<widget class="QToolButton" name="Close">
+			<property name="toolTip">
+			  <string>Close tool</string>
+			</property>
+			<property name="icon">
+		      <iconset>../Close.svg</iconset>
+			</property>
+			<property name="enabled">
+			  <bool>true</bool>
+		    </property>
+            <property name="autoRaise">
+              <bool>true</bool>
+            </property>
+		</widget>
+	  </item>
+    </layout>
+  </widget>
+</ui>
+</xml>

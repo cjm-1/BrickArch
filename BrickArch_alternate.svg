@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="685"
+   height="405"
+   viewBox="0 0 685.00001 405.00001"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="brickArch_alternate.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="255.29711"
+     inkscape:cy="217.64501"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1276"
+     inkscape:window-height="757"
+     inkscape:window-x="0"
+     inkscape:window-y="20"
+     inkscape:window-maximized="0"
+     units="px">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3348" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-647.36216)">
+    <g
+       id="b0"
+       style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;fill:#71baeb;fill-opacity:1;stroke:#7f1734;stroke-opacity:1"
+       transform="translate(2.5,-2.5078125)">
+      <title
+         id="title3491">keyBottom</title>
+      <path
+         inkscape:connector-curvature="0"
+         id="path3414"
+         d="m 10,1052.3622 -3,-120 106,0 -3,120 z"
+         style="fill:#71baeb;fill-rule:evenodd;stroke:#7f1734;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1" />
+    </g>
+    <g
+       id="tr0"
+       style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;fill:#71baeb;fill-opacity:1;stroke:#7f1734;stroke-opacity:1"
+       transform="translate(2.5,-2.5078125)">
+      <title
+         id="title3485">keyTop</title>
+      <path
+         inkscape:connector-curvature="0"
+         id="path3416"
+         d="m 0,652.3622 7,260 107,0 6,-260 z"
+         style="fill:#71baeb;fill-rule:evenodd;stroke:#7f1734;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1" />
+    </g>
+    <g
+       id="tr2"
+       style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;fill:#71baeb;fill-opacity:1;stroke:#7f1734;stroke-opacity:1"
+       transform="translate(2.5,-2.5078125)">
+      <title
+         id="title3473">TR2</title>
+      <path
+         inkscape:connector-curvature="0"
+         id="path3418"
+         d="m 280,652.3622 -19,260 107,0 32,-260 z"
+         style="fill:#71baeb;fill-rule:evenodd;stroke:#7f1734;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1" />
+    </g>
+    <g
+       id="br2"
+       style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;fill:#71baeb;fill-opacity:1;stroke:#7f1734;stroke-opacity:1"
+       transform="translate(2.5,-2.5078125)">
+      <title
+         id="title3503">BR2</title>
+      <path
+         inkscape:connector-curvature="0"
+         id="path3420"
+         d="m 250,1052.3622 9,-120 106,0 -15,120 z"
+         style="fill:#71baeb;fill-rule:evenodd;stroke:#7f1734;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1" />
+    </g>
+    <g
+       id="br4"
+       style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;fill:#71baeb;fill-opacity:1;stroke:#7f1734;stroke-opacity:1"
+       transform="translate(2.5,-2.5078125)">
+      <title
+         id="title3515">BR4</title>
+      <path
+         inkscape:connector-curvature="0"
+         id="path3422"
+         d="m 490,1052.3622 21,-120 106,0 -27,120 z"
+         style="fill:#71baeb;fill-rule:evenodd;stroke:#7f1734;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1" />
+    </g>
+    <g
+       id="tr4"
+       transform="matrix(1.000006,0,0,0.99809127,2.496416,-0.7658982)"
+       style="stroke-width:5.0047636;stroke-miterlimit:4;stroke-dasharray:none;fill:#71baeb;fill-opacity:1;stroke:#7f1734;stroke-opacity:1">
+      <title
+         id="title3467">TR4</title>
+      <path
+         inkscape:connector-curvature="0"
+         id="path3424"
+         d="m 560,651.87513 -45,260.48707 107,0 57.37883,-260.4741 z"
+         style="fill:#71baeb;fill-rule:evenodd;stroke:#7f1734;stroke-width:5.0047636;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
+         sodipodi:nodetypes="ccccc" />
+    </g>
+    <g
+       id="tr1"
+       style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;fill:#71baeb;fill-opacity:1;stroke:#7f1734;stroke-opacity:1"
+       transform="translate(2.5,-2.5078125)">
+      <title
+         id="title3479">TR1</title>
+      <path
+         inkscape:connector-curvature="0"
+         id="path3426"
+         d="m 140,652.3622 -3,120 114,0 9,-120 z"
+         style="fill:#71baeb;fill-rule:evenodd;stroke:#7f1734;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1" />
+    </g>
+    <g
+       id="br1"
+       style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;fill:#71baeb;fill-opacity:1;stroke:#7f1734;stroke-opacity:1"
+       transform="translate(2.5,-2.5078125)">
+      <title
+         id="title3497">BR1</title>
+      <path
+         inkscape:connector-curvature="0"
+         id="path3428"
+         d="m 130,1052.3622 7,-260 113,0 -20,260 z"
+         style="fill:#71baeb;fill-rule:evenodd;stroke:#7f1734;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1" />
+    </g>
+    <g
+       id="br3"
+       style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;fill:#71baeb;fill-opacity:1;stroke:#7f1734;stroke-opacity:1"
+       transform="translate(2.5,-2.5078125)">
+      <title
+         id="title3509">BR3</title>
+      <path
+         inkscape:connector-curvature="0"
+         id="path3430"
+         d="m 370,1052.3622 33,-260 113,0 -46,260 z"
+         style="fill:#71baeb;fill-rule:evenodd;stroke:#7f1734;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1" />
+    </g>
+    <g
+       id="tr3"
+       style="stroke-width:5;stroke-miterlimit:4;stroke-dasharray:none;fill:#71baeb;fill-opacity:1;stroke:#7f1734;stroke-opacity:1"
+       transform="translate(2.5,-2.5078125)">
+      <title
+         id="title3465">TR3</title>
+      <path
+         inkscape:connector-curvature="0"
+         id="path3432"
+         d="m 420,652.3622 -15,120 114,0 21,-120 z"
+         style="fill:#71baeb;fill-rule:evenodd;stroke:#7f1734;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1" />
+    </g>
+  </g>
+</svg>
