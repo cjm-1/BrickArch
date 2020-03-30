@@ -3,15 +3,8 @@
  *
  * This file is part of the Brick Arch project, an addon for QCAD 3.x.
  *
- * This copy of Brick Arch is free software: you can redistribute it and/or
- * modify it under the terms of the GNU General Public Licence as published by
- * the Free Software Foundation, either version 3 of the Licence, or
- * (at your option) any later version.
- *
- * This free version of Brick Arch is distributed in the hope that it will be
- * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERTHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public Licence for more details.
+ * This script contains the common functions and menu settings for all tools
+ * included in the Brick Arch project.
  */
 
 //! [include]
@@ -37,85 +30,42 @@ BrickArch.prototype = new Draw();
 BrickArch.includeBasePath = includeBasePath;
 //! [inheritance]
 
-//! [Dimensions]
-BrickArch.prototype.Dimensions =
+//! [beginEvent]
+// This runs when this script is executed
+BrickArch.prototype.beginEvent = function()
 {
-	bottomLength : 1000,        // *
-	archHeight : 200,           // *
-	jointSize : 5,              // * Entered by user but includes fallback
-	brickWidth : 65,            // * variables
-	skew : 20,                  // *
-	skewLength : undefined,     // Calculated from skew and archHeight
-	bottomWidth : undefined,    // Calculated by findSingleWidth
-	topLength : undefined,      // Calculated by findTopLength
-	brickCount : undefined,     // Calculated by countBricks
-	topWidth : undefined,       // Calculated by findSingleWidth using topLength
-	cornerPoints : [],			// Finished points if arch is one brick high
-	hJointPoints : [],          // Array of rows if arch has horizontal joints
-};
-//! [Dimensions]
-
-//! [toRadians]
-// Converts a value measured in degrees to radians
-BrickArch.prototype.toRadians = function(number)
-{
-	result = number * Math.PI / 180;
-	return result;
-} // Returns the angle in radians
-//! [toRadians]
-
-//! [slotClose]
-// Terminates the tool if the Close button is clicked
-BrickArch.prototype.slotClose = function()
-{
-	this.terminate()
+	EAction.prototype.beginEvent.call(this);
+	this.setState(this.State.ConfigureToolBar);
 }
-//! [slotClose]
+//! [beginEvent]
 
-//! [countBricks]
-// Counts the number of bricks needed for 1 layer from the length needed to be
-// filled, the size of the joint between and the max width of each brick
-BrickArch.prototype.countBricks = function()
+//! [State]
+BrickArch.prototype.State =
 {
-	// Calculates combined length of one brick and one joint
-	var brickAndJoint = this.Dimensions.brickWidth +
-		this.Dimensions.jointSize;
-	// Finds the longest horizontal measurement of the arch plus one joint and
-	// divides it by the length of a brick and a joint
-	var brickCount = Math.ceil((this.Dimensions.topLength +
-		this.Dimensions.jointSize) / brickAndJoint);
-	// Ensures that the number of bricks in arch is an odd number
-	if (brickCount % 2 != 1) 
+	ConfigureToolBar : 0,
+	ConfigureDialog : 1,
+};
+//! [State]
+
+//! [setState]
+BrickArch.prototype.setState = function(state)
+{
+	EAction.prototype.setState.call(this, state);
+	switch (state)
 	{
-		brickCount++;
+		case this.State.ConfigureToolBar:
+			break;
+		case this.State.ConfigureDialog:
+			var ToolBarInput = this.readToolBar();
+			var DialogInput = this.showDialog();
+			var ArchData = this.buildArchData(ToolBarInput, DialogInput);
+			var ArchPoints = this.calculatePoints(ArchData);
+			this.drawArch(ArchData, ArchPoints);
+			this.terminate()
+			break;
 	}
-	return brickCount;
-};
-//! [countBricks]
-
-//! [findOppositeLength]
-// Finds the length of the opposite side of a right angled triangle, from the
-// opposite corner, measured in radians
-BrickArch.prototype.findOppositeLength = function(angle, height) 
-{
-	var oppositeLength = Math.tan(angle) * height;
-	return oppositeLength.toFixed(3);
 }
-//! [findOppositeLength]
-
-//! [findSingleWidth]
-// Finds the width a single brick should be on a line based on its length, the
-// number of bricks to fill it and the size of the joint between
-BrickArch.prototype.findSingleWidth = function(fullLength) 
-{
-	// Removes all joints from full length
-	var justBricks = fullLength - ((this.Dimensions.brickCount - 1) *
-		this.Dimensions.jointSize);
-	// Divides what remains by the number of bricks in the arch
-	var oneBrick = justBricks / this.Dimensions.brickCount;
-	return oneBrick;
-};
-//! [findSingleWidth]
+//! [setState]
 
 //! [beginEvent]
 // This runs when this script is executed
@@ -131,6 +81,293 @@ BrickArch.prototype.beginEvent = function()
 	}
 };
 //! [beginEvent]
+
+//! [slotConfirm]
+// Starts the calculation process when the Confirm button is clicked
+BrickArch.prototype.slotConfirm = function()
+{
+	this.setState(this.State.ConfigureDialog);
+}
+//! [slotConfirm]
+
+//! [slotClose]
+// Terminates the tool if the Close button is clicked
+BrickArch.prototype.slotClose = function()
+{
+	this.terminate()
+}
+//! [slotClose]
+
+//! [drawArch]
+// Draws arch pieces as polylines from RVectors in a nested array of "bricks"
+BrickArch.prototype.drawArch = function(Arch, points)
+{
+	//var di = this.getDocumentInterface();
+	//di.setRelativeZero(new RVector(100,100));
+	// For every brick in the arch, draws it in the document as a polyline
+	switch (Arch.lineMode)
+	{
+		case "Line":
+			for (course = 0; course < Arch.courseCount; course++)
+			{
+				for (brick = 0; brick < Arch.drawCount; brick++)
+				{
+					if (points[course][brick])
+					{
+						this.addLineShape(points[course][brick], true);
+					}
+				}
+			}
+			break;
+		case "Polyline":
+			for (course = 0; course < Arch.courseCount; course++)
+			{
+				for (brick = 0; brick < Arch.drawCount; brick++)
+				{
+					if (points[course][brick])
+					{
+						addPolyline(points[course][brick], true);
+					}
+				}
+			}
+			break;
+	}
+	// If document is a drawing, label it in colour
+	if (Arch.templateOrDrawing == "Drawing")
+	{
+		this.labelArch(Arch, points, "#7A263A", "#1BB1E7", "#F3D459");
+	}
+};
+//! [drawArch]
+
+//! [toRadians]
+// Converts a value measured in degrees to radians
+BrickArch.prototype.toRadians = function(number)
+{
+	result = number * Math.PI / 180;
+	return result;
+} // Returns the angle in radians
+//! [toRadians]
+
+//! [countBricks]
+// Counts the number of bricks needed for 1 layer from the length needed to be
+// filled, the size of the joint between and the max width of each brick
+BrickArch.prototype.countBricks = function(fullLength, brickWidth, jointSize)
+{
+	// Calculates combined length of one brick and one joint
+	var brickAndJoint = brickWidth + jointSize;
+	// Finds the longest horizontal measurement of the arch plus one joint and
+	// divides it by the length of a brick and a joint
+	var brickCount = Math.ceil((fullLength + jointSize) / brickAndJoint);
+	// Ensures that the number of bricks in arch is an odd number
+	if (brickCount % 2 != 1) 
+	{
+		brickCount++;
+	}
+	return brickCount;
+};
+//! [countBricks]
+
+//! [findOppositeLengthA]
+// Finds the length of the opposite side of a right angled triangle, given the
+// angle and the length of the adjacent side
+BrickArch.prototype.findOppositeLengthA = function(angle, height) 
+{
+	var oppositeLength = Math.tan(angle) * height;
+	return Number(oppositeLength.toFixed(3));
+}
+//! [findOppositeLengthA]
+
+//! [findOppositeLengthH]
+// Finds the length of the opposite side of a right angled triangle, given the
+// angle and the length of the hypotenuse
+BrickArch.prototype.findOppositeLengthH = function(angle, height)
+{
+	var oppositeLength = Math.sin(angle) * height;
+	return Number(oppositeLength.toFixed(3));
+}
+//! [findOppositeLengthH]
+
+//! [findSingleWidth]
+// Finds the width a single brick should be on a line based on its length, the
+// number of bricks to fill it and the size of the joint between
+BrickArch.prototype.findSingleWidth = function(fullLength, brickCount, jointSize) 
+{
+	// Removes all joints from full length
+	var justBricks = fullLength - ((brickCount - 1) *
+		jointSize);
+	// Divides what remains by the number of bricks in the arch
+	var oneBrick = justBricks / brickCount;
+	return Number(oneBrick.toFixed(3));
+};
+//! [findSingleWidth]
+
+// Scripts for drawing dimensions
+
+//! [drawHorizontalDim]
+BrickArch.prototype.drawHorizontalDim = function(extensionPoint1,
+	extensionPoint2, definitionPoint)
+{
+	include("scripts/Draw/Dimension/DimRotated/DimRotated.js");
+	var di = getDocumentInterface();
+	var doc = this.getDocument();
+	// create and initialize tool:
+	var a = new DimRotated();
+	
+	// Amend getOperation for absence of scale value in toolbar
+	a.getOperation = function(preview) {
+    	if (!this.data.isValid()) {
+    	    return undefined;
+    	}
+
+    	var doc = this.getDocument();
+    	var scale = 1;
+    	var scaled_data = this.data;
+
+    	scaled_data.setLinearFactor(1/scale);
+
+    	var entity = new RDimRotatedEntity(doc, scaled_data);
+    	if (!isEntity(entity)) {
+    	    return undefined;
+    	}
+
+    	return new RAddObjectOperation(entity, this.getToolTitle());
+	};
+
+	a.setDocumentInterface(di);
+
+	a.data.setExtensionPoint1(new RVector(extensionPoint1));
+	a.data.setExtensionPoint2(new RVector(extensionPoint2));
+	a.data.setDefinitionPoint(new RVector(definitionPoint));
+	a.data.setRotation(0.0);
+
+	// run operation on current document:
+	var op = a.getOperation(false);
+	di.applyOperation(op);
+}
+//! [drawHorizontalDim]
+
+//! [drawVerticalDim]
+BrickArch.prototype.drawVerticalDim = function(extensionPoint1,
+	extensionPoint2, definitionPoint)
+{
+	include("scripts/Draw/Dimension/DimRotated/DimRotated.js");
+	var di = getDocumentInterface();
+	var doc = this.getDocument();
+	// create and initialize tool:
+	var a = new DimRotated();
+	
+	// Amend getOperation for absence of scale value in toolbar
+	a.getOperation = function(preview) {
+    	if (!this.data.isValid()) {
+    	    return undefined;
+    	}
+
+    	var doc = this.getDocument();
+    	var scale = 1;
+    	var scaled_data = this.data;
+
+    	scaled_data.setLinearFactor(1/scale);
+
+    	var entity = new RDimRotatedEntity(doc, scaled_data);
+    	if (!isEntity(entity)) {
+    	    return undefined;
+    	}
+
+    	return new RAddObjectOperation(entity, this.getToolTitle());
+	};
+
+	a.setDocumentInterface(di);
+
+	a.data.setExtensionPoint1(new RVector(extensionPoint1));
+	a.data.setExtensionPoint2(new RVector(extensionPoint2));
+	a.data.setDefinitionPoint(new RVector(definitionPoint));
+	// Locks rotation of measurement to 90 degrees
+	a.data.setRotation(Math.PI / 2);
+
+	// run operation on current document:
+	var op = a.getOperation(false);
+	di.applyOperation(op);
+}
+//! [drawVerticalDim]
+
+//! [drawAlignedDim]
+BrickArch.prototype.drawAlignedDim = function(extensionPoint1,
+	extensionPoint2, definitionPoint)
+{
+	include("scripts/Draw/Dimension/DimAligned/DimAligned.js");
+	var di = getDocumentInterface();
+	var doc = this.getDocument();
+	// create and initialize tool:
+	var a = new DimAligned();
+	
+	// Amend getOperation for absence of scale value in toolbar
+	a.getOperation = function(preview) {
+    	if (!this.data.isValid()) {
+    	    return undefined;
+    	}
+
+    	var doc = this.getDocument();
+    	var scale = 1;
+    	var scaled_data = this.data;
+
+    	scaled_data.setLinearFactor(1/scale);
+
+    	var entity = new RDimAlignedEntity(doc, scaled_data);
+    	if (!isEntity(entity)) {
+    	    return undefined;
+    	}
+
+    	return new RAddObjectOperation(entity, this.getToolTitle());
+	};
+
+	a.setDocumentInterface(di);
+
+	a.data.setExtensionPoint1(new RVector(extensionPoint1));
+	a.data.setExtensionPoint2(new RVector(extensionPoint2));
+	a.data.setDefinitionPoint(new RVector(definitionPoint));
+
+	// run operation on current document:
+	var op = a.getOperation(false);
+	di.applyOperation(op);
+}
+//! [drawAlignedDim]
+
+//! [drawAngularDim]
+BrickArch.prototype.drawAngularDim = function(firstEntity, secondEntity,
+	dimArcPosition)
+{
+	include("scripts/Draw/Dimension/DimAngular/DimAngular.js");
+	var di = getDocumentInterface();
+	var doc = this.getDocument();
+	// create and initialize tool:
+	var a = new DimAngular();
+
+	var lineEntity1 = new RLineEntity(doc, firstEntity);
+	var lineEntity2 = new RLineEntity(doc, secondEntity);
+
+	a.setDocumentInterface(di);
+
+	a.firstEntity = lineEntity1;
+	a.secondEntity = lineEntity2;
+	a.dimArcPosition = dimArcPosition;
+
+	// run operation on current document:
+	var op = a.getOperation(false);
+	di.applyOperation(op);
+}
+//! [drawAngularDim]
+
+//! [addLineShape]
+BrickArch.prototype.addLineShape = function(pointList)
+{
+	for (point = 0; point < (pointList.length - 1); point++)
+	{
+		addLine(pointList[point],pointList[point + 1]);
+	}
+	addLine(pointList[pointList.length - 1],pointList[0]);
+}
+//! [addLineShape]
 
 //! [getMenu]
 // Defines the submenu in the Draw menu for brick arches

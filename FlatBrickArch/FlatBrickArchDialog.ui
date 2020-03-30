@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * Copyright (c) 2019 by Christopher Mead. All rights reserved.
+ *
+ * This file is part of the Brick Arch project, an addon for QCAD 3.x.
+ *
+ * This XML document defines the toolbar for the Flat Brick Arch tool.
+ -->
+
+<ui version="4.0">
+  <class>FlatBrickArchOptions</class>
+  <widget class="QDialog" name="FlatBrickArchOptions">
+	  <property name="geometry">
+	    <rect>
+	  	  <x>0</x>
+			  <y>0</y>
+	  	  <width>402</width>
+		    <height>320</height>
+	    </rect>
+	  </property>
+	  <property name="windowTitle">
+	    <string>Flat Brick Arch Options</string>
+	  </property>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item>
+                <widget class="QGroupBox" name="HJoints">
+                  <property name="title">
+                    <string>Horizontal Joints</string>
+									</property>
+									<property name="minimumSize">
+									  <size>
+									    <width>210</width>
+									    <height>120</height>
+									  </size>
+									</property>
+                  <layout class="QVBoxLayout" name="verticalLayout">
+                    <item>
+                      <widget class="QRadioButton" name="FullBrick">
+                        <property name="text">
+                          <string>&amp;No horizontal joint</string>
+                        </property>
+                        <property name="checked">
+                          <bool>true</bool>
+                        </property>
+                      </widget>
+                    </item>
+                    <item>
+                      <widget class="QRadioButton" name="SingleJoint">
+                        <property name="text">
+                          <string>&amp;Single horizontal joint</string>
+                        </property>
+                      </widget>
+                    </item>
+                    <item>
+                      <widget class="QRadioButton" name="SplitJoint">
+                        <property name="text">
+                          <string>&amp;Split horizontal joint</string>
+                        </property>
+					    <property name="enabled">
+					      <bool>false</bool>
+					    </property>
+                      </widget>
+					</item>
+				  <item>
+					<layout class="QHBoxLayout" name="horizontalLayout_3">
+					  <item>
+						<widget class="QLabel" name="SmallHeightLabel">
+						  <property name="text">
+							<string>Small height: </string>
+							  </property>
+							</widget>
+						  </item>
+						  <item>
+						    <widget class="RMathLineEdit" name="SmallHeight">
+							  <property name="enabled">
+								<bool>false</bool>
+						      </property>
+						      <property name="text">
+								<string notr="true">65</string>
+							  </property>
+							  <property name="angle" stdset="0">
+								<bool>false</bool>
+							  </property>
+							</widget>
+						  </item>
+						</layout>
+					  </item>
+					  <item>
+						<widget class="QCheckBox" name="Invert">
+						  <property name="text">
+							<string>Invert horizontal joints</string>
+						  </property>
+						  <property name="checked">
+							<bool>false</bool>
+						  </property>
+						  <property name="enabled">
+							<bool>false</bool>
+						  </property>
+						</widget>
+					  </item>
+			              <item>
+			                <widget class="QToolButton" name="toolButton">
+			                  <property name="minimumSize">
+			                    <size>
+			                      <width>210</width>
+			                      <height>95</height>
+			                    </size>
+				                </property>
+				                <property name="styleSheet">
+				                  <string notr="true">border:0px inset #d7d4e1; padding: 3px; background-color: rgb(235, 232, 228);</string>
+				                </property>
+				                <property name="icon">
+				                  <iconset>
+				                    <normaloff>FullBrick.svg</normaloff>FullBrick.svg</iconset>
+				                </property>
+				                <property name="iconSize">
+				                  <size>
+				                    <width>210</width>
+				                    <height>155</height>
+				                  </size>
+				                </property>
+				              </widget>
+				            </item>
+                  </layout>
+                </widget>
+              </item>
+<!--          <item>
+                <spacer name="verticalSpacer_2">
+                  <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                    <size>
+                      <width>20</width>
+                      <height>50</height>
+                    </size>
+                  </property>
+                </spacer>
+							</item>-->
+<!--          <item>
+                <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeType">
+                    <enum>QSizePolicy::Maximum</enum>
+                    </property>
+                  <property name="sizeHint" stdset="0">
+                    <size>
+                      <width>13</width>
+                      <height>20</height>
+                    </size>
+                  </property>
+                </spacer>
+							</item>-->
+            </layout>
+          </item>
+          <item>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+				<widget class="QGroupBox" name="TemplateOrDrawing">
+                  <property name="title">
+                    <string>Template or drawing</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_5">
+                    <item>
+                      <widget class="QRadioButton" name="Template">
+                        <property name="text">
+                          <string>&amp;Template</string>
+                        </property>
+                        <property name="checked">
+                          <bool>true</bool>
+                        </property>
+                      </widget>
+                    </item>
+                    <item>
+                      <widget class="QRadioButton" name="Drawing">
+                        <property name="text">
+                          <string>&amp;Drawing</string>
+                        </property>
+                      </widget>
+                    </item>
+                  </layout>
+                </widget>
+              </item>
+              <item>
+				<widget class="QGroupBox" name="LineMode">
+                  <property name="title">
+                    <string>Line type</string>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_7">
+                    <item>
+                      <widget class="QRadioButton" name="Line">
+                        <property name="text">
+                          <string>&amp;Line</string>
+                        </property>
+                      </widget>
+                    </item>
+                    <item>
+                      <widget class="QRadioButton" name="Polyline">
+                        <property name="text">
+                          <string>&amp;Polyline</string>
+                        </property>
+                        <property name="checked">
+                          <bool>true</bool>
+                        </property>
+                      </widget>
+                    </item>
+                  </layout>
+                </widget>
+              </item>
+			  <item>
+			    <spacer name="verticalSpacer">
+			      <property name="orientation">
+				    <enum>Qt::Vertical</enum>
+				  </property>
+				  <property name="sizeHint" stdset="0">
+					<size>
+					  <width>25</width>
+					  <height>200</height>
+					</size>
+				  </property>
+				</spacer>
+			  </item>
+            </layout>
+		  </item>
+        </layout>
+      </item>
+      <item>
+        <widget class="QDialogButtonBox" name="buttonBox">
+          <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="standardButtons">
+            <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+          </property>
+        </widget>
+      </item>
+    </layout>
+  </widget>
+  <tabstops>
+    <tabstop>FullBrick</tabstop>
+    <tabstop>SingleJoint</tabstop>
+    <tabstop>SplitJoint</tabstop>
+    <tabstop>Template</tabstop>
+    <tabstop>Drawing</tabstop>
+  </tabstops>
+  <resources/>
+  <connections>
+    <connection>
+      <sender>buttonBox</sender>
+      <signal>accepted()</signal>
+      <receiver>FlatBrickArchOptions</receiver>
+      <slot>accept()</slot>
+      <hints>
+        <hint type="sourcelabel">
+          <x>260</x>
+          <y>290</y>
+        </hint>
+        <hint type="destinationlabel">
+          <x>157</x>
+          <y>274</y>
+        </hint>
+      </hints>
+    </connection>
+    <connection>
+      <sender>buttonBox</sender>
+      <signal>rejected()</signal>
+      <receiver>FlatBrickArchOptions</receiver>
+      <slot>reject()</slot>
+      <hints>
+        <hint type="sourcelabel">
+          <x>328</x>
+          <y>290</y>
+        </hint>
+        <hint type="destinationlabel">
+          <x>286</x>
+          <y>274</y>
+        </hint>
+      </hints>
+    </connection>
+    <connection>
+      <sender>SingleJoint</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>SmallHeight</receiver>
+      <slot>setEnabled(bool)</slot>
+      <hints>
+        <hint type="sourcelabel">
+          <x>122</x>
+          <y>86</y>
+        </hint>
+        <hint type="destinationlabel">
+          <x>122</x>
+          <y>86</y>
+        </hint>
+      </hints>
+		</connection>
+    <connection>
+      <sender>SingleJoint</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>Invert</receiver>
+      <slot>setEnabled(bool)</slot>
+      <hints>
+        <hint type="sourcelabel">
+          <x>381</x>
+          <y>206</y>
+        </hint>
+        <hint type="destinationlabel">
+          <x>341</x>
+          <y>194</y>
+        </hint>
+      </hints>
+    </connection>
+    <connection>
+      <sender>SingleJoint</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>"toolButton"</receiver>
+      <slot>hide()</slot>
+    </connection>
+    <connection>
+      <sender>SplitJoint</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>SmallHeight</receiver>
+      <slot>setEnabled(bool)</slot>
+      <hints>
+        <hint type="sourcelabel">
+          <x>122</x>
+          <y>86</y>
+        </hint>
+        <hint type="destinationlabel">
+          <x>122</x>
+          <y>86</y>
+        </hint>
+      </hints>
+    </connection>
+    <connection>
+      <sender>SplitJoint</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>Invert</receiver>
+      <slot>setEnabled(bool)</slot>
+      <hints>
+        <hint type="sourcelabel">
+          <x>122</x>
+          <y>86</y>
+        </hint>
+      </hints>
+    </connection>
+  </connections>
+</ui>
