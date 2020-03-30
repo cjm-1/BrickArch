@@ -4,10 +4,10 @@ Brick Arch is a tool for QCAD 3 created and developed by
 [Christopher Mead](https://mead.one/cv.htm) since 2017 for 
 [H.G. Matthews Specialist Brick Services](https://www.hgmatthews.com/specialist-brick-services/).
 
-The aim of this project is to create a suite of tools for automatically drawing
-templates for various types of arches, e.g. flat-gauge, radial, semicircular,
-and bullseye, with various options for brick dimensions, joint sizes, and number
-and orientation of joints.
+The aim of this project is to create a suite of tools for automatically creating
+templates and drawings for various types of arches, e.g. flat-gauge, radial,
+semicircular, and bullseye, with various options for brick dimensions,
+joint sizes, and number and orientation of joints.
 
 This repository contains an incomplete version of the current state of BrickArch
 licensed as free, libre open source software, intended to give an idea of what
