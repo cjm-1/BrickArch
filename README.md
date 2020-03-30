@@ -9,9 +9,9 @@ templates for various types of arches, e.g. flat-gauge, radial, semicircular,
 and bullseye, with various options for brick dimensions, joint sizes, and number
 and orientation of joints.
 
-This repository contains as much of the project as I can reasonably keep as GPL-
-licensed free, libre open source software and will be added to, pending approval
-from my employer.
+This repository contains an incomplete version of the current state of BrickArch
+licensed as free, libre open source software, intended to give an idea of what
+this project is and how I have attempted to achieve it.
 
 This could not have been achieved without the help and guidance I've recieved on
 multiple occasions from [andrew](https://qcad.org/rsforum/memberlist.php?mode=viewprofile&u=2)
