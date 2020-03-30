@@ -208,11 +208,11 @@ BrickArch.prototype.findSingleWidth = function(fullLength, brickCount, jointSize
 BrickArch.prototype.drawHorizontalDim = function(extensionPoint1,
 	extensionPoint2, definitionPoint)
 {
-	include("scripts/Draw/Dimension/DimRotated/DimRotated.js");
+	include("scripts/Draw/Dimension/DimHorizontal/DimHorizontal.js");
 	var di = getDocumentInterface();
 	var doc = this.getDocument();
 	// create and initialize tool:
-	var a = new DimRotated();
+	var a = new DimHorizontal();
 	
 	// Amend getOperation for absence of scale value in toolbar
 	a.getOperation = function(preview) {
@@ -239,7 +239,6 @@ BrickArch.prototype.drawHorizontalDim = function(extensionPoint1,
 	a.data.setExtensionPoint1(new RVector(extensionPoint1));
 	a.data.setExtensionPoint2(new RVector(extensionPoint2));
 	a.data.setDefinitionPoint(new RVector(definitionPoint));
-	a.data.setRotation(0.0);
 
 	// run operation on current document:
 	var op = a.getOperation(false);
@@ -251,11 +250,11 @@ BrickArch.prototype.drawHorizontalDim = function(extensionPoint1,
 BrickArch.prototype.drawVerticalDim = function(extensionPoint1,
 	extensionPoint2, definitionPoint)
 {
-	include("scripts/Draw/Dimension/DimRotated/DimRotated.js");
+	include("scripts/Draw/Dimension/DimVertical/DimVertical.js");
 	var di = getDocumentInterface();
 	var doc = this.getDocument();
 	// create and initialize tool:
-	var a = new DimRotated();
+	var a = new DimVertical();
 	
 	// Amend getOperation for absence of scale value in toolbar
 	a.getOperation = function(preview) {
